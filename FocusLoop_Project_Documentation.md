@@ -18,7 +18,7 @@ Most traditional productivity applications focus on task organization, reminders
 
 FocusLoop addresses this challenge by allowing users to explain why they are avoiding a task. The application then provides a suitable intervention, such as a five-minute focus session, breaking a large task into smaller steps, or reframing anxious thoughts.
 
-The current prototype is implemented using React and Tailwind CSS. It uses hardcoded keyword-based logic to simulate AI behavior and does not require a backend or external API.
+The current prototype is implemented using React, Tailwind CSS, and a Node/Express backend. It uses hardcoded keyword-based logic on the backend to simulate AI behavior and does not require an external AI API key.
 
 ---
 
@@ -129,7 +129,7 @@ The system shall display a sample streak and progress indicator.
 
 ### FR6: Static Execution
 
-The application shall run without a backend, database, or external API key.
+The application shall run without a database or external AI API key. A lightweight Express backend shall provide mock AI and progress endpoints.
 
 ---
 
@@ -163,6 +163,7 @@ The prototype should not send user messages to external services because it does
 |---|---|
 | React | Building the user interface |
 | Vite | Development and production build tooling |
+| Node.js / Express | Backend API for mock AI responses and progress data |
 | Tailwind CSS | Styling and responsive layout |
 | JavaScript | Input processing and mock response logic |
 | Vercel / Netlify | Static deployment |
@@ -171,7 +172,7 @@ The prototype should not send user messages to external services because it does
 
 ## 11. System Architecture
 
-The current prototype uses a frontend-only architecture.
+The current prototype uses a simple full-stack architecture.
 
 ```text
 +--------------------------+
@@ -209,7 +210,8 @@ The current prototype uses a frontend-only architecture.
 - The input is processed locally in the browser.
 - JavaScript checks the input against predefined keywords.
 - A matching response is displayed.
-- No external server or API is contacted.
+- The frontend contacts the local Express backend.
+- No external AI service is contacted.
 
 ---
 
